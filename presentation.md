@@ -7,9 +7,16 @@ Summary of Storm Impact
 ========================================================
 
 
+[R] Code
 
+```r
+dt <- fread('data/events.agg.csv')
+dt.agg.year <- dt[, list(Count=sum(COUNT), Injuries=sum(INJURIES), Fatalities=sum(FATALITIES)), by=list(YEAR)]
+format(sum(dt$FATALITIES), big.mark=' ')
+format(sum(dt$INJURIES), big.mark=' ')
+format(round((sum(dt$PROPDMG) + sum(dt$CROPDMG)) / 1000), big.mark=' ')
+```
 Between 1950 and 2011 severe weather events caused the following damages:
-
  - 14 834 deaths
  - 139 445 injuries
  - $358 billion dollars
